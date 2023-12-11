@@ -27,7 +27,6 @@ struct Range {
 
 struct Mapping {
     std::vector<std::pair<Range, Range>> mappings;
-
     std::vector<Range> apply(Range range) {
         std::vector<Range> result;
         for (int i = 0; i < this->mappings.size(); i++) {
@@ -121,7 +120,7 @@ long find_min_location(Range range, std::vector<Mapping> almanac) {
     return min->start;
 }
 
-int task_1(std::vector<Mapping> mappings, std::vector<long> seeds) {
+long task_1(std::vector<Mapping> mappings, std::vector<long> seeds) {
     std::vector<Range> ranges;
     for (int i = 0; i < seeds.size(); i++) {
         ranges.push_back({seeds[i], seeds[i]});
@@ -133,10 +132,10 @@ int task_1(std::vector<Mapping> mappings, std::vector<long> seeds) {
     return *std::min_element(locations.begin(), locations.end());
 }
 
-int task_2(std::vector<Mapping> mappings, std::vector<long> seeds) {
+long task_2(std::vector<Mapping> mappings, std::vector<long> seeds) {
     std::vector<Range> ranges;
-    for (int i = 0; i < seeds.size(); i+=2) {
-        ranges.push_back({seeds[i], seeds[i] + seeds[i+1] - 1});
+    for (int i = 0; i < seeds.size(); i += 2) {
+        ranges.push_back({seeds[i], seeds[i] + seeds[i + 1] - 1});
     }
     std::vector<long> locations;
     std::transform(ranges.begin(), ranges.end(), std::back_inserter(locations), [&](auto &range) {
