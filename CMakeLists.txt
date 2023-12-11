@@ -13,3 +13,6 @@ add_executable(day_03 day_03/main.cpp
 
 add_executable(day_04 day_04/main.cpp
         day_04/main.cpp)
+
+add_executable(day_05 day_05/main.cpp
+        day_05/main.cpp)
